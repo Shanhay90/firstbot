@@ -8,9 +8,8 @@ import ru.aguzev.firstbot.soapmodel.GetLatestDateResponse
 @Service
 class CentralBankSoapClient : WebServiceGatewaySupport() {
 
-    fun getLatestDates(): GetLatestDateResponse {
-        val request = GetLatestDate()
-        return webServiceTemplate.marshalSendAndReceive(request) as GetLatestDateResponse
+    fun getLatestDates() : GetLatestDate {
+        return GetLatestDate()
     }
 
 

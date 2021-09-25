@@ -31,7 +31,7 @@ class FirstCurrencyBot : TelegramLongPollingBot() {
         val chatId = incomingMessage?.chatId
         var responseMessage = SendMessage()
         responseMessage.chatId = chatId.toString()
-        responseMessage.text = "Я тебя люблю!"
+        responseMessage.text = "Hello World!"
         //responseMessage.setParseMode("Markdown")
         execute(responseMessage)
     }
