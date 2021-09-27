@@ -1,15 +1,16 @@
 package ru.aguzev.firstbot.clients
 
-import org.springframework.stereotype.Service
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport
+import org.springframework.ws.soap.saaj.SaajSoapMessageFactory
 import ru.aguzev.firstbot.soapmodel.GetLatestDate
 import ru.aguzev.firstbot.soapmodel.GetLatestDateResponse
 
-@Service
-class CentralBankSoapClient : WebServiceGatewaySupport() {
 
-    fun getLatestDates() : GetLatestDate {
-        return GetLatestDate()
+class CentralBankSoapClient(saajSoapMessageFactory: SaajSoapMessageFactory) :
+    WebServiceGatewaySupport(saajSoapMessageFactory) {
+
+    fun getLatestDates(): GetLatestDateResponse {
+        return webServiceTemplate.marshalSendAndReceive(GetLatestDate()) as GetLatestDateResponse
     }
 
 

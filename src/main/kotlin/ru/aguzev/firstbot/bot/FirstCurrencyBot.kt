@@ -5,9 +5,10 @@ import org.springframework.stereotype.Service
 import org.telegram.telegrambots.bots.TelegramLongPollingBot
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage
 import org.telegram.telegrambots.meta.api.objects.Update
+import ru.aguzev.firstbot.clients.CentralBankSoapClient
 
 @Service
-class FirstCurrencyBot : TelegramLongPollingBot() {
+class FirstCurrencyBot (private val centralBankSoapClient: CentralBankSoapClient): TelegramLongPollingBot() {
 
     @Value("\${telegram.botName}")
     private val botName: String = ""
@@ -31,8 +32,8 @@ class FirstCurrencyBot : TelegramLongPollingBot() {
         val chatId = incomingMessage?.chatId
         var responseMessage = SendMessage()
         responseMessage.chatId = chatId.toString()
-        responseMessage.text = "Hello World!"
-        //responseMessage.setParseMode("Markdown")
+        responseMessage.text = centralBankSoapClient.getLatestDates().getLatestDateResult
+
         execute(responseMessage)
     }
 
