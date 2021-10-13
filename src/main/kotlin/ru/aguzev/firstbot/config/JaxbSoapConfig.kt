@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.oxm.jaxb.Jaxb2Marshaller
 import org.springframework.ws.soap.saaj.SaajSoapMessageFactory
 import ru.aguzev.firstbot.clients.CentralBankSoapClient
+import javax.xml.bind.Marshaller
 import javax.xml.soap.MessageFactory
 import javax.xml.soap.SOAPConstants
 
@@ -15,6 +16,9 @@ class JaxbSoapConfig {
     @Bean
     fun marshaller(): Jaxb2Marshaller {
         val marshaller = Jaxb2Marshaller()
+        var prop = mapOf(Marshaller.JAXB_ENCODING to "ISO-8859-1" )
+        //marshaller.setUnmarshallerProperties(prop)
+        marshaller.setMarshallerProperties(prop)
         marshaller.setPackagesToScan("ru.aguzev.firstbot.soapmodel")
         return marshaller
     }

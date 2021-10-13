@@ -34,9 +34,8 @@ apply plugin: 'idea'
 apply plugin: 'kotlin'
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.4'
     implementation 'org.telegram:telegrambots-spring-boot-starter:5.3.0'
-    implementation 'org.springframework.ws:spring-ws-core:3.1.1'
+    implementation 'org.springframework.boot:spring-boot-starter-web-services:2.5.5'
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.5.31"
     implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.0.1'
     implementation "org.glassfish.jaxb:jaxb-core:2.3.0.1"
@@ -49,8 +48,6 @@ dependencies {
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     testImplementation "org.junit.jupiter:junit-jupiter-api"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
-
-
 
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
